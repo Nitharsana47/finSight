@@ -17,10 +17,15 @@ export const signUpWithEmail = async ({ email, password, fullName, country, inve
                 { $set: { country, investmentGoals, riskTolerance, preferredIndustry } }
             );
 
-            await inngest.send({
-                name: 'app/user.created',
-                data: { email, name: fullName, country, investmentGoals, riskTolerance, preferredIndustry }
-            })
+            // The welcome email is a bonus: if the job queue is unavailable, sign-up still succeeds
+            try {
+                await inngest.send({
+                    name: 'app/user.created',
+                    data: { email, name: fullName, country, investmentGoals, riskTolerance, preferredIndustry }
+                })
+            } catch (e) {
+                console.error('Welcome email not queued:', e)
+            }
         }
 
         return { success: true, data: response }
