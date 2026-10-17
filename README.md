@@ -157,6 +157,15 @@ npx inngest-cli@latest dev
 
 ---
 
+## Authors
+
+| | |
+|---|---|
+| **Nitharsana** | [@Nitharsana47](https://github.com/Nitharsana47) |
+| **Preethi** | [@leop3025](https://github.com/leop3025) |
+
+---
+
 ## Credits
 
 FinSight started from the open-source **Signalist** tutorial by [JavaScript Mastery](https://www.youtube.com/@javascriptmastery), which provided the base app: authentication, stock search, TradingView charts and the welcome and news emails.
