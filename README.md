@@ -6,7 +6,7 @@ FinSight is a full-stack investing dashboard built with Next.js and MongoDB. Use
 
 ![Next.js](https://img.shields.io/badge/Next.js_15-black?logo=next.js) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_4-06B6D4?logo=tailwindcss&logoColor=white) ![Inngest](https://img.shields.io/badge/Inngest-background_jobs-111) ![Gemini](https://img.shields.io/badge/Google_Gemini-8E75B2?logo=googlegemini&logoColor=white)
 
-<!-- Live demo: add your Vercel URL here once deployed -->
+**Live demo: [fin-sight-2bsf.vercel.app](https://fin-sight-2bsf.vercel.app)** (create a free account to try it)
 
 ---
 
