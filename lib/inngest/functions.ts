@@ -3,8 +3,7 @@ import {NEWS_SUMMARY_EMAIL_PROMPT, PERSONALIZED_WELCOME_EMAIL_PROMPT} from "@/li
 import {sendNewsSummaryEmail, sendPriceAlertEmail, sendWelcomeEmail} from "@/lib/nodemailer";
 import { getActiveAlertsForCheck, isAlertTriggered, markAlertTriggered } from "@/lib/alerts";
 import { fetchQuotes } from "@/lib/market";
-import {getAllUsersForNewsEmail} from "@/lib/actions/user.actions";
-import { getWatchlistSymbolsByEmail } from "@/lib/actions/watchlist.actions";
+import {getAllUsersForNewsEmail, getWatchlistSymbolsByEmail} from "@/lib/users";
 import { getNews } from "@/lib/actions/finnhub.actions";
 import { getFormattedTodayDate } from "@/lib/utils";
 import { APP_NAME } from "@/lib/brand";

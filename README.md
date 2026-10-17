@@ -1,178 +1,168 @@
-<div align="center">
-  <br />
-    <a href="https://youtu.be/gu4pafNCXng" target="_blank">
-      <img src="public/readme/hero.webp" alt="Project Banner">
-    </a>
-  <br />
+# FinSight
 
-  <div>
-    <img src="https://img.shields.io/badge/-Next.js-black?style=for-the-badge&logoColor=white&logo=next.js&color=black"/>
-    <img src="https://img.shields.io/badge/-Better Auth-black?style=for-the-badge&logoColor=white&logo=betterauth&color=black"/>
-<img src="https://img.shields.io/badge/-Shadcn-black?style=for-the-badge&logoColor=white&logo=shadcnui&color=black"/>
-<img src="https://img.shields.io/badge/-Inngest-black?style=for-the-badge&logoColor=white&logo=inngest&color=black"/><br/>
+**Stock tracking, price alerts and risk forecasts in one place.**
 
-<img src="https://img.shields.io/badge/-MongoDB-black?style=for-the-badge&logoColor=white&logo=mongodb&color=00A35C"/>
-<img src="https://img.shields.io/badge/-CodeRabbit-black?style=for-the-badge&logoColor=white&logo=coderabbit&color=9146FF"/>
-<img src="https://img.shields.io/badge/-TailwindCSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=38B2AC"/>
-<img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6"/>
+FinSight is a full-stack investing dashboard built with Next.js and MongoDB. Users keep a watchlist, get emailed when a stock crosses a price target, track their portfolio's profit and loss, and see how risky each stock (and their whole portfolio) is likely to be tomorrow, using a GARCH volatility model that is backtested against real market data.
 
-  </div>
+![Next.js](https://img.shields.io/badge/Next.js_15-black?logo=next.js) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_4-06B6D4?logo=tailwindcss&logoColor=white) ![Inngest](https://img.shields.io/badge/Inngest-background_jobs-111) ![Gemini](https://img.shields.io/badge/Google_Gemini-8E75B2?logo=googlegemini&logoColor=white)
 
-  <h3 align="center">Stock Market App — Alerts, Charts, AI Insights</h3>
+<!-- Live demo: add your Vercel URL here once deployed -->
 
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://youtu.be/gu4pafNCXng" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
-</div>
+---
 
-## 📋 <a name="table">Table of Contents</a>
+## Features
 
-1. ✨ [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🔗 [Assets](#links)
-6. 🚀 [More](#more)
+| | |
+|---|---|
+| **Watchlist** | Search any US stock (Ctrl+K), star it, and track live price and daily change. |
+| **Price alerts** | "Email me when AAPL rises above $400." A background job checks every active alert every 5 minutes and sends the email exactly once. |
+| **Portfolio tracker** | Record holdings with shares and buy price. Live value, profit and loss, daily change and position weights; repeat buys update the average cost. |
+| **Risk forecast** | For every stock and for the whole portfolio: tomorrow's typical move, yearly volatility, and the possible loss on a bad day (1 in 20) or very bad day (1 in 100). |
+| **Model backtest** | Each risk forecast is checked against the last two years of real prices and compared with three other methods (see below). |
+| **Stock summary & portfolio review** | Plain-English summaries tailored to the user's goals and risk tolerance, generated server-side with Gemini. |
+| **Emails** | Personalised welcome email, daily news digest for the user's watchlist, and price-alert emails. |
+| **Dashboard** | Portfolio value, today's change, active alerts, biggest movers, plus market overview, heatmap and news widgets. |
 
-## 🚨 Tutorial
+---
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
+## The risk model
 
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
+Predicting tomorrow's *price* is close to impossible: in testing, an AR(1) return model got the direction right on about 50% of days, the same as a coin flip. Predicting tomorrow's *risk* is much more reliable, because volatility clusters: calm days tend to follow calm days, and turbulent days follow turbulent days. FinSight models that with **GARCH(1,1)**:
 
-<a href="https://youtu.be/gu4pafNCXng" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
-
-## <a name="introduction">✨ Introduction</a>
-
-AI-powered modern stock market app built with Next.js, Shadcn, Better Auth, and Inngest! Track real-time prices, set personalized alerts, explore company insights, and manage watchlists. The admin dashboard allows managing stocks, publishing news, and monitoring user activity, while event-driven workflows power automated alerts, AI-driven daily digests, earnings notifications, and sentiment analysis—perfect for devs who want a dynamic, real-time financial platform.
-
-If you're getting started and need assistance or face any bugs, join our active Discord community with over **50k+** members. It's a place where people help each other out.
-
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
-
-## <a name="tech-stack">⚙️ Tech Stack</a>
-
-- **[Better Auth](https://www.better-auth.com/)** is a framework-agnostic authentication and authorization library for TypeScript. It provides built-in support for email/password login, social sign-on (Google, GitHub, Apple, and more), and multi-factor authentication, simplifying user authentication and account management.
-
-- **[CodeRabbit](https://jsm.dev/stocks-coderabbit)** is an AI-powered code review assistant that integrates with GitHub. It helps developers catch bugs, enforce best practices, and maintain consistent code quality across pull requests, reducing manual review effort and speeding up the development workflow.
-
-
-- **[Finnhub](https://finnhub.io/)** is a real-time financial data API that provides stock, forex, and cryptocurrency market data. It offers developers access to fundamental data, economic indicators, and news, making it useful for building trading apps, dashboards, and financial analysis tools.
-
-- **[Inngest](https://jsm.dev/stocks-inngest)** is a platform for event-driven workflows and background jobs. It allows developers to build reliable, scalable automated processes such as real-time alerts, notifications, and AI-powered workflows.
-
-- **[MongoDB](https://www.mongodb.com/)** is a flexible, high-performance NoSQL database. It stores data in JSON-like documents, supports dynamic schemas, and provides robust features for scalability, replication, and querying.
-
-- **[Nodemailer](https://nodemailer.com/)** is a Node.js library for sending emails easily. It supports various transport methods such as SMTP, OAuth2, and third-party services, making it a reliable tool for handling transactional emails, notifications, and contact forms in applications.
-
-- **[Next.js](https://nextjs.org/docs)** is a powerful React framework for building full-stack web applications. It provides server-side rendering, static site generation, and API routes, allowing developers to create optimized and scalable apps quickly.
-
-- **[Shadcn](https://ui.shadcn.com/docs)** is an open-source library of fully customizable, accessible React components. It helps teams rapidly build consistent, visually appealing UIs while allowing full control over design and layout.
-
-- **[TailwindCSS](https://tailwindcss.com/)** is a utility-first CSS framework that allows developers to build custom, responsive designs quickly without leaving their HTML. It provides pre-defined classes for layout, typography, colors, and more.
-
-- **[TypeScript](https://www.typescriptlang.org/)** is a statically typed superset of JavaScript that improves code quality, tooling, and error detection. It is ideal for building large-scale applications and enhances maintainability.
-
-## <a name="features">🔋 Features</a>
-
-👉 **Stock Dashboard**: Track real-time stock prices with interactive line and candlestick charts, including historical data, and filter stocks by industry, performance, or market cap.
-
-👉 **Powerful Search**: Quickly find the best stocks with an intelligent search system that helps you navigate through Signalist.
-
-👉 **Watchlist & Alerts**: Create a personalized watchlist, set alert thresholds for price changes or volume spikes, and receive instant email notifications to stay on top of the market.
-
-👉 **Company Insights**: Explore detailed financial data such as PE ratio, EPS, revenue, recent news, filings, analyst ratings, and sentiment scores for informed decision-making.
-
-👉 **Real-Time Workflows**: Powered by **Inngest**, automate event-driven processes like price updates, alert scheduling, automated reporting, and AI-driven insights.
-
-👉 **AI-Powered Alerts & Summaries**: Generate personalized market summaries, daily digests, and earnings report notifications, helping users track performance and make data-driven decisions.
-
-👉 **Customizable Notifications**: Fine-tune alerts and notifications based on user watchlists and preferences for a highly personalized experience.
-
-👉 **Analytics & Insights**: Gain insights into user behavior, stock trends, and engagement metrics, enabling smarter business and trading decisions.
-
-And many more, including code architecture and reusability.
-
-## <a name="quick-start">🤸 Quick Start</a>
-
-Follow these steps to set up the project locally on your machine.
-
-**Prerequisites**
-
-Make sure you have the following installed on your machine:
-
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
-
-**Cloning the Repository**
-
-```bash
-git clone https://github.com/adrianhajdin/signalist_stock-tracker-app.git
-cd signalist_stock-tracker-app
+```
+σ²ₜ = ω + α·ε²ₜ₋₁ + β·σ²ₜ₋₁
 ```
 
-**Installation**
+- **α** controls how strongly yesterday's surprise raises today's risk; **β** controls how long elevated risk persists.
+- Parameters are fitted by **maximum likelihood** with a Nelder-Mead optimiser, written from scratch in TypeScript (no statistics library). A test on simulated data recovers known parameters (α = 0.102 vs 0.100, β = 0.851 vs 0.850).
+- **Value-at-Risk** uses *filtered historical simulation*: tomorrow's GARCH volatility multiplied by the empirical quantiles of the model's own standardised residuals, which captures fat tails that a normal distribution misses.
+- Portfolio risk applies the same model to the portfolio's daily returns, holding today's weights constant.
 
-Install the project dependencies using npm:
+### Backtest
+
+Each model forecasts the next day's VaR using only past data (walk-forward, refitted every 21 trading days) over the most recent 504 trading days. A forecast "passes" when the share of days with losses beyond the forecast is statistically consistent with the target (Kupiec proportion-of-failures test, 5% significance), at both the 95% and 99% levels.
+
+Results on AAPL, NVDA, JPM and SPY (5 years of daily data, 8 tests per model):
+
+| Method | Kupiec tests passed | Volatility forecast quality (QLIKE) |
+|---|---|---|
+| Historical simulation (250 days) | 8 / 8 | weakest on 3 of 4 assets (reacts slowly) |
+| EWMA / RiskMetrics (λ = 0.94) | 6 / 8 | middle |
+| GARCH(1,1), normal distribution | 5 / 8 (underestimates extreme days) | best or tied on 3 of 4 |
+| **GARCH(1,1), filtered historical (used)** | **8 / 8** | **best or tied on 3 of 4** |
+
+The app shows these results live for each stock under *"How this is calculated"*.
+
+---
+
+## Architecture
+
+```mermaid
+flowchart LR
+    U[Browser] --> N[Next.js App Router<br/>server components + server actions]
+    N --> A[Better Auth]
+    N --> M[(MongoDB Atlas<br/>users, watchlists,<br/>alerts, holdings)]
+    N --> F[Finnhub API]
+    N -. fallback .-> Y[Yahoo Finance]
+    N --> R[GARCH risk engine<br/>lib/risk]
+    N --> G[Gemini]
+    U --> T[TradingView widgets]
+    I[Inngest] -->|every 5 min| N
+    I -->|daily 12:00 UTC| N
+    N --> E[Nodemailer / Gmail]
+```
+
+- **Market data:** Finnhub is the primary source for quotes, search and news. If a Finnhub request fails, the app falls back to Yahoo Finance automatically, so prices and news keep working.
+- **Background jobs (Inngest):** a welcome email on sign-up, a daily news digest, and a price-alert check every 5 minutes. Each alert is marked triggered in the same database update that claims it, so a retried job never sends a duplicate email.
+- **Security:** every server action checks the session; background-job helpers live outside `lib/actions` so they are not callable from the browser; credentials stay in environment variables.
+
+---
+
+## Tech stack
+
+| Area | Technologies |
+|---|---|
+| Framework | Next.js 15 (App Router, server actions, Turbopack), React 19, TypeScript |
+| Styling | Tailwind CSS 4, shadcn/ui (Radix primitives), lucide-react |
+| Data | MongoDB Atlas with Mongoose |
+| Auth | Better Auth (email and password) |
+| Jobs | Inngest (cron and event-driven functions) |
+| Email | Nodemailer with Gmail |
+| Market data | Finnhub, Yahoo Finance (fallback), TradingView widgets |
+| AI | Google Gemini (stock summaries, portfolio review, email content) |
+| Charts | Custom SVG charts (volatility and backtest) with hover tooltips |
+
+---
+
+## Project structure
+
+```
+app/
+  (auth)/               sign-in and two-step sign-up
+  (root)/               dashboard, watchlist, portfolio, stocks/[symbol]
+  api/inngest/          background job endpoint
+components/
+  risk/                 risk card and SVG charts
+  ...                   watchlist, alerts, portfolio, dialogs, layout
+lib/
+  risk/                 math.ts, garch.ts, backtest.ts (the risk engine)
+  risk-data.ts          builds stock and portfolio risk reports
+  market.ts             quotes, price history, Yahoo fallback
+  actions/              server actions (watchlist, alerts, portfolio, summaries)
+  inngest/              background jobs and prompts
+  alerts.ts             server-only helpers for the alert job
+database/models/        Mongoose models (watchlist, alerts, holdings)
+```
+
+---
+
+## Getting started
+
+**Requirements:** Node.js 20+, a MongoDB Atlas cluster (the free tier works), and free API keys for Finnhub and Gemini.
 
 ```bash
+git clone https://github.com/Nitharsana47/finSight.git
+cd finSight
 npm install
+cp .env.example .env    # then fill in your own values
+npm run dev             # http://localhost:3000
 ```
 
-**Set Up Environment Variables**
-
-Create a new file named `.env` in the root of your project and add the following content:
-
-```env
-NODE_ENV='development'
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
-
-# FINNHUB
-NEXT_PUBLIC_NEXT_PUBLIC_FINNHUB_API_KEY=
-FINNHUB_BASE_URL=https://finnhub.io/api/v1
-
-# MONGODB
-MONGODB_URI=
-
-# BETTER AUTH
-BETTER_AUTH_SECRET=
-BETTER_AUTH_URL=http://localhost:3000
-
-# GEMINI
-GEMINI_API_KEY=
-
-#NODEMAILER
-NODEMAILER_EMAIL=
-NODEMAILER_PASSWORD=
-```
-
-Replace the placeholder values with your real credentials. You can get these by signing up at: [**MongoDB**](https://www.mongodb.com/products/platform/atlas-database), [**Gemini**](https://aistudio.google.com/prompts/new_chat?utm_source=chatgpt.com), [**Inngest**](https://jsm.dev/stocks-inggest), [**Finnhub**](https://finnhub.io).
-
-**Running the Project**
+For alerts and emails, run the Inngest dev server in a second terminal:
 
 ```bash
-npm run dev
 npx inngest-cli@latest dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+### Environment variables
 
-## <a name="links">🔗 Assets</a>
+| Variable | Purpose |
+|---|---|
+| `MONGODB_URI` | MongoDB Atlas connection string |
+| `BETTER_AUTH_SECRET` | Random string used to sign sessions |
+| `BETTER_AUTH_URL`, `NEXT_PUBLIC_BASE_URL` | The app's URL (`http://localhost:3000` locally) |
+| `NEXT_PUBLIC_FINNHUB_API_KEY`, `FINNHUB_BASE_URL` | Finnhub market data |
+| `GEMINI_API_KEY` | Google Gemini |
+| `NODEMAILER_EMAIL`, `NODEMAILER_PASSWORD` | Gmail address and a Gmail app password |
+| `INNGEST_EVENT_KEY`, `INNGEST_SIGNING_KEY` | Production only (from Inngest Cloud) |
 
-Assets and snippets used in the project can be found in the **[video kit](https://jsm.dev/stocks-kit)**.
+### Scripts
 
-<a href="https://jsm.dev/stocks-kit" target="_blank">
-  <img src="public/readme/videokit.webp" alt="Video Kit Banner">
-</a>
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` / `npm start` | Production build and server |
+| `npm run lint` | Run ESLint |
+| `npm run test:db` | Check the MongoDB connection |
 
-## <a name="more">🚀 More</a>
+---
 
-**Advance your skills with Next.js Pro Course**
+## Credits
 
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with
-detailed explanations, cool features, and exercises to boost your skills. Give it a go!
+FinSight started from the open-source **Signalist** tutorial by [JavaScript Mastery](https://www.youtube.com/@javascriptmastery), which provided the base app: authentication, stock search, TradingView charts and the welcome and news emails.
 
-<a href="https://jsm.dev/stocks-jsmpro" target="_blank">
-  <img src="public/readme/jsmpro.webp" alt="Project Banner">
-</a>
+Added on top of it: the persistent watchlist, price alerts and alert job, portfolio tracker, the GARCH risk engine with VaR and backtesting, risk charts, stock summaries and portfolio review, the Yahoo Finance fallback, the redesigned UI (two-step sign-up, balanced layouts, mobile support, loading and error states), and reliability and security fixes.
+
+---
+
+*FinSight is an educational project. Nothing in it is financial advice.*

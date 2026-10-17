@@ -5,7 +5,7 @@ import { POPULAR_STOCK_SYMBOLS } from '@/lib/constants';
 import { cache } from 'react';
 import { fetchQuote, yahooNews, yahooSearch, type Quote } from '@/lib/market';
 import { getSessionUser } from '@/lib/session';
-import { getWatchlistSymbolsByEmail } from '@/lib/actions/watchlist.actions';
+import { getWatchlistSymbolsByEmail } from '@/lib/users';
 
 const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
 const NEXT_PUBLIC_FINNHUB_API_KEY = process.env.NEXT_PUBLIC_FINNHUB_API_KEY ?? '';
@@ -23,7 +23,7 @@ async function fetchJSON<T>(url: string, revalidateSeconds?: number): Promise<T>
   return (await res.json()) as T;
 }
 
-export { fetchJSON };
+// fetchJSON stays private: exporting it from a "use server" file would let any browser make the server fetch arbitrary URLs
 
 export async function getStockQuote(symbol: string): Promise<Quote | null> {
   return fetchQuote(symbol);
