@@ -8,7 +8,6 @@ import { getSessionUser } from '@/lib/session';
 import { getWatchlistSymbolsByEmail } from '@/lib/users';
 
 const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
-const NEXT_PUBLIC_FINNHUB_API_KEY = process.env.NEXT_PUBLIC_FINNHUB_API_KEY ?? '';
 
 async function fetchJSON<T>(url: string, revalidateSeconds?: number): Promise<T> {
   const options: RequestInit & { next?: { revalidate?: number } } = revalidateSeconds
@@ -57,7 +56,7 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
 
   try {
     const range = getDateRange(5);
-    const token = process.env.FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
+    const token = process.env.FINNHUB_API_KEY ?? '';
     if (!token) {
       throw new Error('FINNHUB API key is not configured');
     }
@@ -175,7 +174,7 @@ async function searchBySymbolOrName(query: string, token: string): Promise<Stock
 
 export const searchStocks = cache(async (query?: string): Promise<StockWithWatchlistStatus[]> => {
   try {
-    const token = process.env.FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
+    const token = process.env.FINNHUB_API_KEY ?? '';
     const trimmed = typeof query === 'string' ? query.trim() : '';
 
     const [stocks, user] = await Promise.all([

@@ -141,7 +141,7 @@ npx inngest-cli@latest dev
 | `MONGODB_URI` | MongoDB Atlas connection string |
 | `BETTER_AUTH_SECRET` | Random string used to sign sessions |
 | `BETTER_AUTH_URL`, `NEXT_PUBLIC_BASE_URL` | The app's URL (`http://localhost:3000` locally) |
-| `NEXT_PUBLIC_FINNHUB_API_KEY`, `FINNHUB_BASE_URL` | Finnhub market data |
+| `FINNHUB_API_KEY`, `FINNHUB_BASE_URL` | Finnhub market data |
 | `GEMINI_API_KEY` | Google Gemini |
 | `NODEMAILER_EMAIL`, `NODEMAILER_PASSWORD` | Gmail address and a Gmail app password |
 | `INNGEST_EVENT_KEY`, `INNGEST_SIGNING_KEY` | Production only (from Inngest Cloud) |

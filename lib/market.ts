@@ -6,7 +6,7 @@ const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
 const YAHOO_BASE_URL = 'https://query1.finance.yahoo.com';
 const YAHOO_HEADERS = { 'User-Agent': 'Mozilla/5.0 (FinSight)' };
 
-const getFinnhubToken = () => process.env.FINNHUB_API_KEY ?? process.env.NEXT_PUBLIC_FINNHUB_API_KEY ?? '';
+const getFinnhubToken = () => process.env.FINNHUB_API_KEY ?? '';
 
 export type Quote = {
     symbol: string;
